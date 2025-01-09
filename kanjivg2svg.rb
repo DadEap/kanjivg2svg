@@ -51,13 +51,14 @@ class Importer
     def parse(doc)
       codepoint = nil
       entry = doc.css('g')[1]
-      if entry['kvg:element'].nil?
-        codepoint = entry['id'].split(':')[1].to_i(16) # get it from the id="kvg:0abcd"
-      else
-        codepoint = entry['kvg:element'].codepoints.first
-      end
+	  codepoint = entry['kvg:element']
+      #if entry['kvg:element'].nil?
+      #  codepoint = entry['id'].split(':')[1].to_i(16) # get it from the id="kvg:0abcd"
+      #else
+      #  codepoint = entry['kvg:element'].codepoints.first
+      #end
 
-      svg = File.open("#{@output_dir}/#{codepoint}_#{@type}.svg", File::RDWR|File::TRUNC|File::CREAT)
+      svg = File.open("#{@output_dir}/#{codepoint}.svg", File::RDWR|File::TRUNC|File::CREAT)
       stroke_count = 0
       stroke_total = entry.css('path[d]').length
       paths = []
