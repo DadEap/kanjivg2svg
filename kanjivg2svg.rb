@@ -180,7 +180,7 @@ input_dir = ARGV[0] # Directory of .svg's
 type = ARGV[1] || 'frames' # Style of output, frames|animated|numbers
 
 output_dir = File.expand_path('../svgs',  __FILE__)
-Dir.mkdir(output_dir) unless File.exists?(output_dir)
+Dir.mkdir(output_dir) unless File.exist?(output_dir)
 
 processed = 0
 puts "Starting the conversion @ #{Time.now} ..."
